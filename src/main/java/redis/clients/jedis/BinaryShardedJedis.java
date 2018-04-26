@@ -13,6 +13,7 @@ import redis.clients.jedis.params.sortedset.ZAddParams;
 import redis.clients.jedis.params.sortedset.ZIncrByParams;
 import redis.clients.util.Hashing;
 import redis.clients.util.Sharded;
+import sun.reflect.generics.reflectiveObjects.NotImplementedException;
 
 public class BinaryShardedJedis extends Sharded<Jedis, JedisShardInfo> implements
     BinaryJedisCommands {
@@ -797,5 +798,9 @@ public class BinaryShardedJedis extends Sharded<Jedis, JedisShardInfo> implement
     Jedis j = getShard(key);
     return j.bitfield(key, arguments);
  }
-  
+
+  @Override
+  public List<String> getGeotargetings(Double lat, Double lon) {
+    throw new NotImplementedException();
+  }
 }
