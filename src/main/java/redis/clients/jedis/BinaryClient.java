@@ -1352,6 +1352,6 @@ public class BinaryClient extends Connection {
   }
 
   protected void getGeotargetings(Double latitude, Double longitude) {
-    sendCommand(GETGEOTARGETING, toByteArray(longitude), toByteArray(longitude));
+    sendCommand(GETGEOTARGETING, toByteArray(latitude), toByteArray(longitude));
   }
 }

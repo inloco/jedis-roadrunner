@@ -1,0 +1,8 @@
+version: '2'
+services:
+  geotargeting-redis:
+      image: inlocomedia/redis-geoquery
+      container_name: redis-geotargeting
+      hostname: redis
+      ports:
+        - '6330:6379'

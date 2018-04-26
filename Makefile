@@ -249,6 +249,7 @@ start: stunnel cleanup
 	echo "$$REDIS_CLUSTER_NODE3_CONF" | redis-server -
 	echo "$$REDIS_CLUSTER_NODE4_CONF" | redis-server -
 	echo "$$REDIS_CLUSTER_NODE5_CONF" | redis-server -
+	docker-compose up -d
 
 cleanup:
 	- rm -vf /tmp/redis_cluster_node*.conf 2>/dev/null
@@ -284,6 +285,8 @@ stop:
 	rm -f /tmp/redis_cluster_node3.conf
 	rm -f /tmp/redis_cluster_node4.conf
 	rm -f /tmp/redis_cluster_node5.conf
+	docker-compose kill
+	docker-compose rm --force
 
 test:
 	make start
