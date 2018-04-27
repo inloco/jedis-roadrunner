@@ -3614,4 +3614,11 @@ public class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKey
     client.bitfield(key, arguments);
     return client.getBinaryMultiBulkReply();
   }
+
+  @Override
+  public List<String> getGeotargetings(final Double latitude, final Double longitude) {
+    checkIsInMultiOrPipeline();
+    client.getGeotargetings(latitude, longitude);
+    return client.getMultiBulkReply();
+  }
 }

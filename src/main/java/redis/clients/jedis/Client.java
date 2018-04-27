@@ -1126,4 +1126,8 @@ public class Client extends BinaryClient implements Commands {
     bitfield(SafeEncoder.encode(key), argumentArray);
   }
 
+  @Override
+  public void getGeotargetings(final Double latitude, final Double longitude) {
+    super.getGeotargetings(latitude, longitude);
+  }
 }

@@ -305,4 +305,5 @@ public interface BinaryJedisCommands {
    */
   List<byte[]> bitfield(final byte[] key, final byte[]... arguments);
 
+  List<String> getGeotargetings(Double lat, Double lon);
 }

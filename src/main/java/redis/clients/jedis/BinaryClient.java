@@ -1350,4 +1350,8 @@ public class BinaryClient extends Connection {
     System.arraycopy(value, 0, bitfieldArgs, 1, argsLength);
     sendCommand(Command.BITFIELD, bitfieldArgs);
   }
+
+  protected void getGeotargetings(Double latitude, Double longitude) {
+    sendCommand(GETGEOTARGETING, toByteArray(latitude), toByteArray(longitude));
+  }
 }

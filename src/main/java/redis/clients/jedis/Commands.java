@@ -344,4 +344,6 @@ public interface Commands {
    * @param args
    */
   void bitfield(final String key, final String...arguments);
+
+  void getGeotargetings(Double lat, Double lon);
 }
