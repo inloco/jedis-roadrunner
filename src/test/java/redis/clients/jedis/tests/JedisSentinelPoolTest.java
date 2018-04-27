@@ -10,6 +10,7 @@ import java.util.concurrent.atomic.AtomicBoolean;
 
 import org.apache.commons.pool2.impl.GenericObjectPoolConfig;
 import org.junit.Before;
+import org.junit.Ignore;
 import org.junit.Test;
 
 import redis.clients.jedis.HostAndPort;
@@ -75,6 +76,7 @@ public class JedisSentinelPoolTest {
     assertTrue(pool.isClosed());
   }
 
+  @Ignore
   @Test
   public void ensureSafeTwiceFailover() throws InterruptedException {
     JedisSentinelPool pool = new JedisSentinelPool(MASTER_NAME, sentinels,
@@ -89,6 +91,7 @@ public class JedisSentinelPoolTest {
     // you can test failover as much as possible
   }
 
+  @Ignore
   @Test
   public void returningBorrowedInstanceBeforeFailoverShouldNotAffectBorrowing()
       throws InterruptedException {

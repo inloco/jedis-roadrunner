@@ -136,7 +136,8 @@ public class JedisSentinelPool extends Pool<Jedis> {
     log.info("Trying to find master from available Sentinels...");
 
     for (String sentinel : sentinels) {
-      final HostAndPort hap = HostAndPort.parseString(sentinel);
+      String[] parts = HostAndPort.extractParts(sentinel);
+      final HostAndPort hap = new HostAndPort(parts[0], Integer.valueOf(parts[1]));
 
       log.fine("Connecting to Sentinel " + hap);
 
