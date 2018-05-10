@@ -345,5 +345,5 @@ public interface Commands {
    */
   void bitfield(final String key, final String...arguments);
 
-  void getGeotargetings(Double lat, Double lon);
+  void getGeotargetings(String bucket, Double lat, Double lon);
 }
