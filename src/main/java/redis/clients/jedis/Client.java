@@ -1127,7 +1127,14 @@ public class Client extends BinaryClient implements Commands {
   }
 
   @Override
-  public void getGeotargetings(final String bucket, Double latitude, final Double longitude) {
+  public void getGeotargetings(final String bucket, final double latitude, final double longitude) {
     super.getGeotargetings(bucket, latitude, longitude);
+  }
+
+  @Override
+  public void calcGeotargetings(final String bucket, final String geotargetingId, final String targetingId,
+                                final String adId, final double latitude, final double longitude, final int radius,
+                                final int queryRadius) {
+      super.calcGeotargetings(bucket, geotargetingId, targetingId, adId, latitude, longitude, radius, queryRadius);
   }
 }

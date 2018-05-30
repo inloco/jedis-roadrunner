@@ -306,4 +306,6 @@ public interface BinaryJedisCommands {
   List<byte[]> bitfield(final byte[] key, final byte[]... arguments);
 
   List<String> getGeotargetings(String bucket, Double lat, Double lon);
+  List<String> calcGeotargeting(String bucket, String geotargetingId, String targetingId, String adId, double latitude,
+                                double longitude, int radius, int queryRadius);
 }
