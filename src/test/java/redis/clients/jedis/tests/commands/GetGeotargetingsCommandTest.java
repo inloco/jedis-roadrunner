@@ -5,7 +5,9 @@ import org.junit.Before;
 import org.junit.Test;
 import redis.clients.jedis.*;
 
+import java.util.Collections;
 import java.util.HashSet;
+import java.util.List;
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -56,7 +58,7 @@ public class GetGeotargetingsCommandTest extends JedisCommandTestBase {
     public void saveGeoTargetings() {
         try (TestGeotargetingClient testGeotargetingClient = new TestGeotargetingClient(HOST, PORT)) {
             for (String geoTargeting: geoTargetings) {
-                assertEquals("OK", testGeotargetingClient.addGeoTargeting(geoTargeting));
+                assertEquals(Collections.singletonList("OK"), testGeotargetingClient.addGeoTargeting(geoTargeting));
             }
         }
     }
@@ -103,13 +105,30 @@ public class GetGeotargetingsCommandTest extends JedisCommandTestBase {
     }
 
     private static class TestGeotargetingClient extends Connection {
+        private final Jedis jedis = new Jedis(HOST, PORT);
+
         private TestGeotargetingClient(String host, Integer port) {
             super(host, port);
         }
 
-        String addGeoTargeting(String geoTargeting) {
-            sendCommand(Protocol.Command.CALCGEOTARGETING, geoTargeting.split(" "));
-            return getStatusCodeReply();
+        List<String> addGeoTargeting(String geoTargeting) {
+            String[] args = geoTargeting.split(" ");
+            String geotargetingId = args[1];
+            String targetingId = args[2];
+            String adId = args[3];
+            double latitude = Double.valueOf(args[4]);
+            double longitude = Double.valueOf(args[5]);
+            int radius = Integer.valueOf(args[6]);
+            int queryRadius = Integer.valueOf(args[7]);
+
+            return jedis.calcGeotargeting(
+                    BUCKET, geotargetingId, targetingId, adId, latitude, longitude, radius, queryRadius);
+        }
+
+        @Override
+        public void close() {
+            jedis.disconnect();
+            super.close();
         }
     }
 }
