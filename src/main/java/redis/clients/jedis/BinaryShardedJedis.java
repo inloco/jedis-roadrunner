@@ -803,4 +803,10 @@ public class BinaryShardedJedis extends Sharded<Jedis, JedisShardInfo> implement
   public List<String> getGeotargetings(String bucket, Double lat, Double lon) {
     throw new NotImplementedException();
   }
+
+  @Override
+  public List<String> calcGeotargeting(String bucket, String geotargetingId, String targetingId, String adId,
+                                       double latitude, double longitude, int radius, int queryRadius) {
+    throw new NotImplementedException();
+  }
 }
