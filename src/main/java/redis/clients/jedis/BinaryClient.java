@@ -1351,8 +1351,9 @@ public class BinaryClient extends Connection {
     sendCommand(Command.BITFIELD, bitfieldArgs);
   }
 
-  protected void getGeotargetings(String bucket, Double latitude, Double longitude) {
-    sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude));
+  protected void getGeotargetings(String bucket, Double latitude, Double longitude, Integer maximumResponseLength) {
+    sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude),
+            toByteArray(maximumResponseLength));
   }
 
   protected void calcGeotargetings(final String bucket, final String geotargetingId, final String targetingId,
