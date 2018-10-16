@@ -1127,15 +1127,18 @@ public class Client extends BinaryClient implements Commands {
   }
 
   @Override
-  public void getGeotargetings(final String bucket, final double latitude, final double longitude,
-                               final int maximumResponseLength) {
-    super.getGeotargetings(bucket, latitude, longitude, maximumResponseLength);
+  public void getGeotargetings(final String bucket, final double latitude, final double longitude) {
+    super.getGeotargetings(bucket, latitude, longitude);
   }
 
   @Override
-  public void calcGeotargetings(final String bucket, final String geotargetingId, final String targetingId,
-                                final String adId, final double latitude, final double longitude, final int radius,
-                                final int queryRadius) {
-      super.calcGeotargetings(bucket, geotargetingId, targetingId, adId, latitude, longitude, radius, queryRadius);
+  public void calcGeotargetings(final String bucket, final String targetingId, final String campaignId,
+                                final double latitude, final double longitude, final int radius) {
+      super.calcGeotargetings(bucket, targetingId, campaignId, latitude, longitude, radius);
+  }
+
+  @Override
+  public void addBucket(final String bucket, final long bucketSize, final long blockSize) {
+    super.addBucket(bucket, bucketSize, blockSize);
   }
 }

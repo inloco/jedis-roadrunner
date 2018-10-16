@@ -1351,15 +1351,17 @@ public class BinaryClient extends Connection {
     sendCommand(Command.BITFIELD, bitfieldArgs);
   }
 
-  protected void getGeotargetings(String bucket, Double latitude, Double longitude, Integer maximumResponseLength) {
-    sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude),
-            toByteArray(maximumResponseLength));
+  protected void getGeotargetings(String bucket, Double latitude, Double longitude) {
+    sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude));
   }
 
-  protected void calcGeotargetings(final String bucket, final String geotargetingId, final String targetingId,
-                                   final String adId, final double latitude, final double longitude, final int radius,
-                                   final int queryRadius) {
-    sendCommand(CALCGEOTARGETING, bucket.getBytes(), geotargetingId.getBytes(), targetingId.getBytes(), adId.getBytes(),
-            toByteArray(latitude), toByteArray(longitude), toByteArray(radius), toByteArray(queryRadius));
+  protected void calcGeotargetings(final String bucket, final String targetingId, final String campaignId,
+                                   final double latitude, final double longitude, final int radius) {
+    sendCommand(CALCGEOTARGETING, bucket.getBytes(), targetingId.getBytes(), campaignId.getBytes(),
+            toByteArray(latitude), toByteArray(longitude), toByteArray(radius));
+  }
+
+  protected void addBucket(final String bucket, final long bucketSize, final long blockSize) {
+    sendCommand(ADDBUCKET, bucket.getBytes(), toByteArray(bucketSize), toByteArray(blockSize));
   }
 }
