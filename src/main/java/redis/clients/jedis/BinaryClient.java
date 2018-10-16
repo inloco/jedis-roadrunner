@@ -1257,4 +1257,18 @@ public class BinaryClient extends Connection {
   public void hstrlen(final byte[] key, final byte[] field) {
     sendCommand(HSTRLEN, key, field);
   }
+
+  protected void getGeotargetings(String bucket, Double latitude, Double longitude) {
+    sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude));
+  }
+
+  protected void calcGeotargetings(final String bucket, final String targetingId, final String campaignId,
+                                   final double latitude, final double longitude, final int radius) {
+    sendCommand(CALCGEOTARGETING, bucket.getBytes(), targetingId.getBytes(), campaignId.getBytes(),
+            toByteArray(latitude), toByteArray(longitude), toByteArray(radius));
+  }
+
+  protected void addBucket(final String bucket, final long bucketSize, final long blockSize) {
+    sendCommand(ADDBUCKET, bucket.getBytes(), toByteArray(bucketSize), toByteArray(blockSize));
+  }
 }

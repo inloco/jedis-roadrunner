@@ -1158,4 +1158,18 @@ public class Client extends BinaryClient implements Commands {
     hstrlen(SafeEncoder.encode(key), SafeEncoder.encode(field));
   }
 
+  public void getGeotargetings(final String bucket, final double latitude, final double longitude) {
+    super.getGeotargetings(bucket, latitude, longitude);
+  }
+
+  @Override
+  public void calcGeotargetings(final String bucket, final String targetingId, final String campaignId,
+                                final double latitude, final double longitude, final int radius) {
+      super.calcGeotargetings(bucket, targetingId, campaignId, latitude, longitude, radius);
+  }
+
+  @Override
+  public void addBucket(final String bucket, final long bucketSize, final long blockSize) {
+    super.addBucket(bucket, bucketSize, blockSize);
+  }
 }

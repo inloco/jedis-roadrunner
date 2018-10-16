@@ -3915,4 +3915,26 @@ public class BinaryJedis implements BasicCommands, BinaryJedisCommands, MultiKey
     client.hstrlen(key, field);
     return client.getIntegerReply();
   }
+
+  @Override
+  public List<String> getGeotargetings(final String bucket, final Double latitude, final Double longitude) {
+    checkIsInMultiOrPipeline();
+    client.getGeotargetings(bucket, latitude, longitude);
+    return client.getMultiBulkReply();
+  }
+
+  @Override
+  public String calcGeotargeting(String bucket, String targetingId, String campaignId,
+                                 double latitude, double longitude, int radius) {
+    checkIsInMultiOrPipeline();
+    client.calcGeotargetings(bucket, targetingId, campaignId, latitude, longitude, radius);
+    return client.getStatusCodeReply();
+  }
+
+  @Override
+  public String addBucket(String bucket, long bucketSize, long blockSize) {
+    checkIsInMultiOrPipeline();
+    client.addBucket(bucket, bucketSize, blockSize);
+    return client.getStatusCodeReply();
+  }
 }
