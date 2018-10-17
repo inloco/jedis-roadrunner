@@ -46,7 +46,7 @@ Or use it as a maven dependency:
 
 ```xml
 <dependency>
-    <groupId>redis.clients</groupId>
+    <groupId>inloco.clients</groupId>
     <artifactId>jedis</artifactId>
     <version>2.6.0</version>
     <type>jar</type>

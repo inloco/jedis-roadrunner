@@ -1,7 +1,7 @@
 version: '2'
 services:
   geotargeting-redis:
-      image: inlocomedia/redis-geoquery
+      image: xalala
       container_name: redis-geotargeting
       hostname: redis
       ports:

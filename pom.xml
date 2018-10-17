@@ -8,8 +8,8 @@
 	<modelVersion>4.0.0</modelVersion>
 	<packaging>jar</packaging>
 	<groupId>com.inloco</groupId>
-	<artifactId>jedis</artifactId>
-	<version>inloco-2.11.0</version>
+	<artifactId>jedis-roadrunner</artifactId>
+	<version>1.0.0</version>
 	<name>Jedis</name>
 	<description>Jedis is a blazingly small and sane Redis java client.</description>
   <url>https://github.com/inloco/jedis</url>
