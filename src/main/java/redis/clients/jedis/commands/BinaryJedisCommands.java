@@ -330,7 +330,7 @@ public interface BinaryJedisCommands {
   Long hstrlen(byte[] key, byte[] field);
 
   List<String> getGeotargetings(String bucket, Double lat, Double lon);
-  String calcGeotargeting(String bucket, String targetingId, String campaignId,
-                          double latitude, double longitude, int radius);
+  String calcGeotargeting(String bucket, String targetingId, String campaignId, double latitude, double longitude,
+                          int radius, int queryRadius);
   String addBucket(String bucket, long bucketSize, long blockSize);
 }

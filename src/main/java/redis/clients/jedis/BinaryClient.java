@@ -1262,13 +1262,13 @@ public class BinaryClient extends Connection {
     sendCommand(GETGEOTARGETING, bucket.getBytes(), toByteArray(latitude), toByteArray(longitude));
   }
 
-  protected void calcGeotargetings(final String bucket, final String targetingId, final String campaignId,
-                                   final double latitude, final double longitude, final int radius) {
+  protected void calcGeotargeting(String bucket, String targetingId, String campaignId, double latitude,
+                                  double longitude, int radius, int queryRadius) {
     sendCommand(CALCGEOTARGETING, bucket.getBytes(), targetingId.getBytes(), campaignId.getBytes(),
-            toByteArray(latitude), toByteArray(longitude), toByteArray(radius));
+            toByteArray(latitude), toByteArray(longitude), toByteArray(radius), toByteArray(queryRadius));
   }
 
-  protected void addBucket(final String bucket, final long bucketSize, final long blockSize) {
+  protected void addBucket(String bucket, long bucketSize, long blockSize) {
     sendCommand(ADDBUCKET, bucket.getBytes(), toByteArray(bucketSize), toByteArray(blockSize));
   }
 }
